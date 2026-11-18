@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Karay — Acquire fast</title>
+  <meta charset="UTF-8">
+  <title>Amazon.co.uk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
@@ -10,410 +11,762 @@
       padding: 0;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: #090c10;
-      color: #f8fafc;
+      font-family: "Amazon Ember", Arial, sans-serif;
+      background-color: #e3e6e6;
+      color: #0f1111;
       overflow-x: hidden;
     }
 
-    /* Top Navigation Bar */
-    .navbar {
-      background-color: #0f131a;
-      border-bottom: 1px solid #1e2532;
-      padding: 10px 14px;
+    /* Top Dark Navy Header (#131921) */
+    .nav-main {
+      background-color: #131921;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 12px;
+      padding: 8px 12px;
+      gap: 10px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
     .nav-logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      flex-shrink: 0;
+      padding: 4px 6px;
+    }
+    .nav-logo span {
+      font-size: 13px;
+      font-weight: 400;
+      margin-left: 1px;
+    }
+    .nav-logo-underline {
+      border-bottom: 3px solid #ff9900;
+      border-radius: 50%;
+      padding-bottom: 1px;
+    }
+    .nav-deliver {
       display: flex;
       align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: #ffffff;
-      flex-shrink: 0;
-    }
-    .nav-logo img {
-      height: 38px;
-      width: auto;
-      border-radius: 6px;
-    }
-    .nav-location {
+      gap: 4px;
       font-size: 11px;
-      color: #94a3b8;
+      color: #cccccc;
       line-height: 1.2;
       flex-shrink: 0;
     }
-    .nav-location strong {
+    .nav-deliver strong {
       display: block;
       color: #ffffff;
       font-size: 12px;
     }
 
     /* Search Bar */
-    .search-bar {
+    .nav-search {
       flex: 1;
       display: flex;
-      background: #1a202c;
-      border: 1px solid #2d3748;
-      border-radius: 8px;
-      overflow: hidden;
       height: 38px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #ffffff;
     }
-    .search-select {
-      background: #141923;
-      color: #cbd5e1;
+    .nav-search-cat {
+      background: #e6e6e6;
+      color: #555555;
+      border: none;
+      border-right: 1px solid #cdcdcd;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+    .nav-search-input {
+      flex: 1;
       border: none;
       padding: 0 10px;
-      font-size: 12px;
-      border-right: 1px solid #2d3748;
-    }
-    .search-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: 0 12px;
-      color: #ffffff;
       font-size: 14px;
+      color: #111111;
       outline: none;
     }
-    .search-btn {
-      background: linear-gradient(135deg, #06b6d4, #10b981);
+    .nav-search-btn {
+      background-color: #febd69;
       border: none;
-      padding: 0 16px;
-      font-weight: 700;
-      color: #041f15;
-      cursor: pointer;
-    }
-
-    /* Right Nav Links */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    .nav-item span {
-      display: block;
-      color: #94a3b8;
-      font-size: 10px;
-    }
-    .nav-item strong {
-      color: #ffffff;
-    }
-    .cart-badge {
-      background: #10b981;
-      color: #041f15;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-    }
-
-    /* Secondary Sub-Bar */
-    .subnav {
-      background-color: #141923;
-      padding: 8px 14px;
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      white-space: nowrap;
-      font-size: 13px;
-      border-bottom: 1px solid #1e2532;
-    }
-    .subnav a {
-      color: #e2e8f0;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .subnav a.highlight {
-      color: #34d399;
-      font-weight: 700;
-    }
-
-    /* Main Scrollable Container */
-    .main-wrap {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 16px 14px 50px;
-    }
-
-    /* Row 1: Horizontal Hero Promo Cards */
-    .hero-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(260px, 1fr));
-      gap: 14px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-    }
-    .hero-card {
-      background: linear-gradient(160deg, #161d29 0%, #0e1219 100%);
-      border: 1px solid #242e40;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hero-card.accent-card {
-      background: linear-gradient(160deg, #0d2b26 0%, #101722 100%);
-      border-color: #10b981;
-    }
-    .hero-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #34d399;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .hero-card h2 {
-      font-size: 20px;
-      line-height: 1.25;
-      color: #ffffff;
-      margin-bottom: 12px;
-    }
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .mini-item {
-      background: #0b0e14;
-      border: 1px solid #1e2636;
-      border-radius: 8px;
-      padding: 10px;
-      text-align: center;
-    }
-    .item-box {
-      height: 68px;
-      background: #171e2b;
-      border-radius: 6px;
+      width: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
-      margin-bottom: 8px;
-    }
-    .badge {
-      display: inline-block;
-      background: #ffffff;
-      color: #090c10;
-      font-weight: 800;
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-    .badge.green {
-      background: #10b981;
-      color: #041f15;
-    }
-    .mini-label {
-      display: block;
-      font-size: 11px;
-      color: #94a3b8;
-      margin-top: 4px;
-    }
-
-    /* Row 2: 3-Column Category Cards */
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .grid-card {
-      background-color: #131720;
-      border: 1px solid #222b3a;
-      border-radius: 12px;
-      padding: 16px;
-    }
-    .grid-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .grid-card-header h3 {
       font-size: 17px;
-      color: #ffffff;
-    }
-    .grid-card-header span {
-      color: #34d399;
-      font-size: 13px;
-      font-weight: 600;
+      cursor: pointer;
     }
 
-    /* Row 3: Scrollable Horizontal Product Strip */
-    .strip-section {
-      background-color: #131720;
-      border: 1px solid #222b3a;
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 16px;
-    }
-    .strip-header {
+    /* Right Nav Items */
+    .nav-right {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      gap: 12px;
+      flex-shrink: 0;
     }
-    .strip-header h3 {
-      font-size: 18px;
+    .nav-flag {
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .nav-link-box {
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .nav-link-box span {
+      display: block;
       color: #ffffff;
     }
-    .strip-scroll {
+    .nav-link-box strong {
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .nav-cart {
       display: flex;
+      align-items: flex-end;
+      font-weight: 700;
+      font-size: 13px;
+      position: relative;
+    }
+    .cart-count {
+      color: #f08804;
+      font-weight: 800;
+      font-size: 15px;
+      margin-right: 2px;
+    }
+
+    /* Secondary Sub-Navigation Bar (#232f3e) */
+    .nav-sub {
+      background-color: #232f3e;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 12px;
+      font-size: 13px;
+      gap: 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .nav-sub-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-sub-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-sub-links a.all-btn {
+      font-weight: 700;
+    }
+    .nav-countdown {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      line-height: 1.1;
+      text-align: right;
+    }
+    .timer-boxes {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .timer-box {
+      background: #ffffff;
+      color: #0f1111;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 3px 5px;
+      border-radius: 3px;
+    }
+
+    /* Main Page Wrapper */
+    .page-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 12px 10px 40px;
+    }
+
+    /* Row 1: Top 4 Horizontal Cards */
+    .hero-carousel {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(265px, 1fr));
       gap: 12px;
       overflow-x: auto;
       padding-bottom: 6px;
     }
-    .strip-item {
-      min-width: 165px;
-      background: #0b0e14;
-      border: 1px solid #1f2736;
+    .promo-card {
       border-radius: 10px;
-      padding: 12px;
-      flex-shrink: 0;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 360px;
     }
-    .strip-thumb {
-      height: 110px;
-      background: #171e2b;
-      border-radius: 8px;
+    .card-orange {
+      background: linear-gradient(180deg, #e85d04 0%, #f48c06 100%);
+      color: #ffffff;
+    }
+    .card-white {
+      background: #ffffff;
+      color: #0f1111;
+    }
+    .card-yellow {
+      background: #f5e642;
+      color: #0f1111;
+    }
+    .promo-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .promo-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .promo-sub {
+      font-size: 13px;
+      margin-top: -8px;
+      margin-bottom: 12px;
+    }
+
+    /* Inner 2x2 Grid & Deal Badges */
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .grid-cell-plain {
+      padding: 2px;
+    }
+    .grid-cell-plain img {
+      width: 100%;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 6px;
+      background: #f7f8f8;
+    }
+    .deal-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 38px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .badge-red {
+      background-color: #cc0c39;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .deal-tag-text {
+      color: #cc0c39;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .cell-caption {
+      font-size: 12px;
+      color: #0f1111;
+      margin-top: 2px;
+    }
+
+    /* Row 2: 3-Column White Cards */
+    .mid-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .white-box {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 4px;
+    }
+    .box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .box-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f1111;
+    }
+    .box-header span {
+      font-size: 18px;
+      color: #565959;
+    }
+
+    /* Row 3: Orange-Framed Deals Strip */
+    .orange-strip-wrap {
+      background-color: #e85d04;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 4px;
+    }
+    .orange-strip-wrap h3 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
       margin-bottom: 10px;
     }
-    .strip-title {
-      font-size: 13px;
-      color: #e2e8f0;
+    .strip-cards {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .strip-card {
+      background: #ffffff;
+      min-width: 148px;
+      max-width: 148px;
+      padding: 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .strip-card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .strip-name {
+      font-size: 12px;
+      color: #0f1111;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .strip-price {
-      margin-top: 6px;
+      margin-top: 4px;
       font-size: 16px;
       font-weight: 700;
-      color: #ffffff;
+      color: #0f1111;
     }
-    .strip-price small {
-      color: #64748b;
-      text-decoration: line-through;
+    .strip-price sup {
+      font-size: 10px;
+    }
+    .strip-price del {
+      font-size: 11px;
+      color: #565959;
       font-weight: 400;
-      font-size: 12px;
-      margin-left: 4px;
+      margin-left: 3px;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 28px 16px;
-      color: #64748b;
-      font-size: 13px;
-      border-top: 1px solid #1e2532;
-      margin-top: 24px;
+    /* Row 4: Bottom Cards */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .poppy-card {
+      background: linear-gradient(135deg, #c1121f 0%, #780000 100%);
+      color: #ffffff;
+      padding: 16px;
+      border-radius: 4px;
+      min-height: 180px;
+    }
+    .poppy-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Top Bar -->
-  <nav class="navbar">
-    <a href="#" class="nav-logo">
-      <img src="image_88990569.jpg" alt="Karay">
-    </a>
-    <div class="nav-location">
-      <span>Delivering to</span>
-      <strong>United Kingdom</strong>
-    </div>
-    <div class="search-bar">
-      <select class="search-select">
-        <option>All</option>
-        <option>Tech</option>
-        <option>Home</option>
-        <option>Fashion</option>
-      </select>
-      <input type="text" class="search-input" placeholder="Search Karay...">
-      <button class="search-btn">Go</button>
-    </div>
-    <div class="nav-actions">
-      <div class="nav-item">
-        <span>Hello, Sign in</span>
-        <strong>Account &amp; Lists</strong>
+  <!-- Top Sticky Header -->
+  <header class="nav-main">
+    <a href="#" class="nav-logo"><span class="nav-logo-underline">amazon</span><span>.co.uk</span></a>
+    <div class="nav-deliver">
+      <span>📍</span>
+      <div>
+        <span>Delivering to Shepshed LE12</span>
+        <strong>Update location</strong>
       </div>
-      <div class="nav-item">
+    </div>
+    <div class="nav-search">
+      <select class="nav-search-cat">
+        <option>All</option>
+      </select>
+      <input type="text" class="nav-search-input" placeholder="Search Amazon.co.uk">
+      <button class="nav-search-btn">🔍</button>
+    </div>
+    <div class="nav-right">
+      <div class="nav-flag">🇬🇧 EN ▾</div>
+      <div class="nav-link-box">
+        <span>Hello, sign in</span>
+        <strong>Account &amp; Lists ▾</strong>
+      </div>
+      <div class="nav-link-box">
         <span>Returns</span>
         <strong>&amp; Orders</strong>
       </div>
-      <div class="cart-badge">Cart (0)</div>
+      <div class="nav-cart">
+        <span class="cart-count">0</span>🛒
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-Navigation Bar -->
+  <nav class="nav-sub">
+    <div class="nav-sub-links">
+      <a href="#" class="all-btn">☰ All</a>
+      <a href="#">Amazon Haul</a>
+      <a href="#">Grocery</a>
+      <a href="#">Best Sellers</a>
+      <a href="#">New Releases</a>
+      <a href="#">Amazon Basics</a>
+    </div>
+    <div class="nav-countdown">
+      <div><strong>Black Friday Week</strong><br>starts in</div>
+      <div class="timer-boxes">
+        <span class="timer-box">05</span>:
+        <span class="timer-box">54</span>:
+        <span class="timer-box">22</span>
+      </div>
     </div>
   </nav>
+    <!-- Main Page Container -->
+  <main class="page-wrap">
 
-  <!-- Secondary Category Strip -->
-  <div class="subnav">
-    <a href="#" class="highlight">☰ All Categories</a>
-    <a href="#">Karay Flash Drops</a>
-    <a href="#">Best Sellers</a>
-    <a href="#">Independent Creators</a>
-    <a href="#">Tech &amp; Audio</a>
-    <a href="#">Home Setup</a>
-    <a href="#">Streetwear</a>
-    <a href="#">Sell on Karay</a>
-  </div>
+    <!-- Row 1: Top 4 Hero Promo Cards -->
+    <section class="hero-carousel">
 
-  <!-- Main Scrollable Content -->
-  <main class="main-wrap">
-
-    <!-- Row 1: 4 Hero Promo Cards -->
-    <section class="hero-row">
-      <div class="hero-card accent-card">
+      <!-- Card 1: Early Black Friday Deals (Orange) -->
+      <div class="promo-card card-orange">
         <div>
-          <div class="hero-tag">Karay Direct</div>
-          <h2>Next-Gen Tech &amp; Everyday Carry</h2>
+          <h2 class="promo-title">Early Black Friday Deals</h2>
+          <p class="promo-sub">Smartphones and more</p>
         </div>
-        <div class="mini-grid">
-          <div class="mini-item">
-            <div class="item-box">🎧</div>
-            <span class="badge green">30% off</span>
-            <span class="mini-label">Studio Audio</span>
+        <div style="background: rgba(0,0,0,0.18); border-radius: 8px; padding: 12px; text-align: center;">
+          <img src="https://unsplash.com" alt="Smartphones and more" style="width:100%; height:225px; object-fit:cover; border-radius:6px;">
+        </div>
+      </div>
+
+      <!-- Card 2: Deals that unlock Alexa+ (Orange with Alexa Banner) -->
+      <div class="promo-card card-orange">
+        <div>
+          <div class="promo-eyebrow">Early Black Friday Deals</div>
+          <h2 class="promo-title">Deals that unlock Alexa+</h2>
+        </div>
+        <div>
+          <div style="background:#0077b6; color:#ffffff; text-align:center; font-weight:800; font-size:24px; padding:8px; border-radius:8px 8px 0 0; letter-spacing:-0.5px;">
+            alexa
           </div>
-          <div class="mini-item">
-            <div class="item-box">⌚</div>
-            <span class="badge green">25% off</span>
-            <span class="mini-label">Smart Watches</span>
-          </div>
-          <div class="mini-item">
-            <div class="item-box">🔋</div>
-            <span class="badge green">40% off</span>
-            <span class="mini-label">Fast Chargers</span>
-          </div>
-          <div class="mini-item">
-            <div class="item-box">📱</div>
-            <span class="badge green">18% off</span>
-            <span class="mini-label">Phone Gear</span>
+          <div class="grid-2x2" style="background:#ffffff; padding:8px; border-radius:0 0 8px 8px;">
+            <div class="grid-cell-plain">
+              <img src="https://unsplash.com" alt="Echo Device" style="height:64px;">
+              <span class="badge-red">56% off</span>
+            </div>
+            <div class="grid-cell-plain">
+              <img src="https://unsplash.com" alt="Echo Show" style="height:64px;">
+              <span class="badge-red">50% off</span>
+            </div>
+            <div class="grid-cell-plain">
+              <img src="https://unsplash.com" alt="Smart Display" style="height:64px;">
+              <span class="badge-red">40% off</span>
+            </div>
+            <div class="grid-cell-plain">
+              <img src="https://unsplash.com" alt="Echo Dot" style="height:64px;">
+              <span class="badge-red">42% off</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div>
-          <div class="hero-tag">Verified Sellers</div>
-          <h2>Curated Desk &amp; Gaming Setups</h2>
-        </div>
-        <div class="mini-grid">
-          <div class="mini-item">
-            <div class="item-box">⌨️</div>
-            <span class="badge">35% off</span>
-            <span class="mini-label">Keyboards</span>
+      <!-- Card 3: Shop deals ending soon (White) -->
+      <div class="promo-card card-white">
+        <h2 class="promo-title" style="color:#0f1111;">Shop deals ending soon</h2>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Toy Track">
+            <span class="badge-red">32% off</span>
           </div>
-          <div class="mini-item">
-            <div class="item-box">🖱️</div>
-            
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Action Figures">
+            <span class="badge-red">30% off</span>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Headphones">
+            <span class="badge-red">23% off</span>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Gaming Monitor">
+            <span class="badge-red">23% off</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Kitchen under £5 — amazon haul (Yellow) -->
+      <div class="promo-card card-yellow">
+        <div>
+          <h2 class="promo-title">Kitchen under £5</h2>
+          <p class="promo-sub" style="font-weight:800; font-size:15px;">amazon <span style="font-weight:400;">haul</span> 👀</p>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Kitchen Utensils" style="height:105px;">
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Oven Mitts" style="height:105px;">
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Kitchen Storage" style="height:105px;">
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Kitchen Tools" style="height:105px;">
+          </div>
+        </div>
+      </div>
+
+            </section>
+       <!-- Row 2: Middle 3-Column Grid -->
+    <section class="mid-grid">
+
+      <!-- Card 1: Save on Amazon Devices -->
+      <div class="white-box">
+        <div class="box-header">
+          <h3>Save on Amazon Devices</h3>
+          <span>&rsaquo;</span>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Blink Cameras">
+            <div class="deal-row">
+              <span class="badge-red">43% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Security Bundle">
+            <div class="deal-row">
+              <span class="badge-red">66% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Echo Dot Kids Owl">
+            <div class="deal-row">
+              <span class="badge-red">63% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Echo Spot Clock">
+            <div class="deal-row">
+              <span class="badge-red">31% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Phones & accessories -->
+      <div class="white-box">
+        <div class="box-header">
+          <h3>Phones &amp; accessories</h3>
+          <span>&rsaquo;</span>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Mobiles">
+            <div class="cell-caption">Mobiles</div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Item Finders">
+            <div class="cell-caption">Item Finders</div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Car GPS">
+            <div class="cell-caption">Car GPS</div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="In-ear headphone">
+            <div class="cell-caption">In-ear headphone</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Deals related to your views -->
+      <div class="white-box">
+        <div class="box-header">
+          <h3>Deals related to your views</h3>
+          <span>&rsaquo;</span>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Tablet Case">
+            <div class="deal-row">
+              <span class="badge-red">15% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Lynx Gift Set">
+            <div class="deal-row">
+              <span class="badge-red">50% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Black Tablet">
+            <div class="deal-row">
+              <span class="badge-red">44% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Kids Tablet">
+            <div class="deal-row">
+              <span class="badge-red">42% off</span>
+              <span class="deal-tag-text">Early Black<br>Friday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+        <!-- Row 3: Orange-Framed Deals From Amazon Brands Strip -->
+    <section class="orange-strip-wrap">
+      <h3>Deals from Amazon brands</h3>
+      <div class="strip-cards">
+
+        <!-- Item 1 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Amazon Basics Batteries">
+          <div class="strip-name">Amazon Basics 20-...</div>
+          <div class="deal-row">
+            <span class="badge-red">26% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£5<sup>75</sup> <del>£7.77</del></div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Amazon Basics Wipes">
+          <div class="strip-name">Amazon Basics...</div>
+          <div class="deal-row">
+            <span class="badge-red">25% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£7<sup>45</sup> <del>£9.90</del></div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Our Essentials Toilet Rolls">
+          <div class="strip-name">Our Essentials by...</div>
+          <div class="deal-row">
+            <span class="badge-red">15% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£5<sup>42</sup> <del>£6.38</del></div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Amazon Basics Vacuum">
+          <div class="strip-name">Amazon Basics 850...</div>
+          <div class="deal-row">
+            <span class="badge-red">15% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£33<sup>99</sup> <del>£39.99</del></div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Amazon Basics AAA Batteries">
+          <div class="strip-name">Amazon Basics 40-...</div>
+          <div class="deal-row">
+            <span class="badge-red">29% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£7<sup>19</sup> <del>£10.16</del></div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="strip-card">
+          <img src="https://unsplash.com" alt="Amazon Basics Containers">
+          <div class="strip-name">Amazon Basics...</div>
+          <div class="deal-row">
+            <span class="badge-red">15% off</span>
+            <span class="deal-tag-text">Early Black<br>Friday</span>
+          </div>
+          <div class="strip-price">£6<sup>37</sup> <del>£7.49</del></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Row 4: Bottom Spotlight Row -->
+    <section class="bottom-grid">
+
+      <!-- Left Card: Support the Royal British Legion -->
+      <div class="poppy-card">
+        <h3>Support the Royal<br>British Legion</h3>
+      </div>
+
+      <!-- Middle Card: Products for every need -->
+      <div class="white-box">
+        <div class="box-header">
+          <h3>Products for every need</h3>
+          <span>&rsaquo;</span>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Hair Care" style="height:65px;">
+          </div>
+          <div class="grid-cell-plain">
+            <img src="https://unsplash.com" alt="Sports" style="height:65px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card: Podcasts on Amazon Music -->
+      <div class="white-box">
+        <div class="box-header">
+          <h3>Podcasts on Amazon Music</h3>
+          <span>&rsaquo;</span>
+        </div>
+        <div class="grid-2x2">
+          <div class="grid-cell-plain">
+            <div style="background:#0077b6; color:#ffffff; text-align:center; font-weight:700; font-size:11px; padding:4px; border-radius:4px 4px 0 0;">amazon music</div>
+            <img src="https://unsplash.com" alt="Podcast 1" style="height:55px; border-radius:0 0 4px 4px;">
+          </div>
+          <div class="grid-cell-plain">
+            <div style="background:#0077b6; color:#ffffff; text-align:center; font-weight:700; font-size:11px; padding:4px; border-radius:4px 4px 0 0;">amazon music</div>
+            <img src="https://unsplash.com" alt="Podcast 2" style="height:55px; border-radius:0 0 4px 4px;">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
+
