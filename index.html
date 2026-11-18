@@ -11,95 +11,409 @@
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: #0b0e14;
-      color: #f1f5f9;
-      line-height: 1.6;
-    }
-    .banner {
-      background: linear-gradient(135deg, #0d131d 0%, #131b29 100%);
-      border-bottom: 1px solid #1e293b;
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-    }
-    .banner img {
-      max-width: 210px;
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      display: block;
-    }
-    .banner-tagline {
-      margin-top: 12px;
-      color: #94a3b8;
-      font-size: 14px;
-      letter-spacing: 0.4px;
-    }
-    .container {
-      padding: 24px 16px;
-      max-width: 640px;
-      margin: auto;
-    }
-    .card {
-      background-color: #161c28;
-      border: 1px solid #263042;
-      padding: 22px;
-      margin-top: 16px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-    .card h3 {
-      font-size: 19px;
+      background-color: #090c10;
       color: #f8fafc;
-      margin-bottom: 6px;
+      overflow-x: hidden;
     }
-    .seller {
+
+    /* Top Navigation Bar */
+    .navbar {
+      background-color: #0f131a;
+      border-bottom: 1px solid #1e2532;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+      border-radius: 6px;
+    }
+    .nav-location {
+      font-size: 11px;
       color: #94a3b8;
-      font-size: 14px;
-      margin-bottom: 12px;
+      line-height: 1.2;
+      flex-shrink: 0;
     }
-    .seller strong {
-      color: #cbd5e1;
+    .nav-location strong {
+      display: block;
+      color: #ffffff;
+      font-size: 12px;
     }
-    .price {
-      font-size: 22px;
-      font-weight: 700;
-      color: #34d399;
-      margin-bottom: 16px;
-    }
-    button {
-      background-color: #10b981;
-      color: #052e16;
-      font-weight: 700;
-      border: none;
-      padding: 13px 18px;
+
+    /* Search Bar */
+    .search-bar {
+      flex: 1;
+      display: flex;
+      background: #1a202c;
+      border: 1px solid #2d3748;
       border-radius: 8px;
-      font-size: 15px;
-      width: 100%;
+      overflow: hidden;
+      height: 38px;
+    }
+    .search-select {
+      background: #141923;
+      color: #cbd5e1;
+      border: none;
+      padding: 0 10px;
+      font-size: 12px;
+      border-right: 1px solid #2d3748;
+    }
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0 12px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+    }
+    .search-btn {
+      background: linear-gradient(135deg, #06b6d4, #10b981);
+      border: none;
+      padding: 0 16px;
+      font-weight: 700;
+      color: #041f15;
       cursor: pointer;
     }
-    button:active {
-      background-color: #059669;
+
+    /* Right Nav Links */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .nav-item span {
+      display: block;
+      color: #94a3b8;
+      font-size: 10px;
+    }
+    .nav-item strong {
+      color: #ffffff;
+    }
+    .cart-badge {
+      background: #10b981;
+      color: #041f15;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    /* Secondary Sub-Bar */
+    .subnav {
+      background-color: #141923;
+      padding: 8px 14px;
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: 13px;
+      border-bottom: 1px solid #1e2532;
+    }
+    .subnav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .subnav a.highlight {
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    /* Main Scrollable Container */
+    .main-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 14px 50px;
+    }
+
+    /* Row 1: Horizontal Hero Promo Cards */
+    .hero-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(260px, 1fr));
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .hero-card {
+      background: linear-gradient(160deg, #161d29 0%, #0e1219 100%);
+      border: 1px solid #242e40;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-card.accent-card {
+      background: linear-gradient(160deg, #0d2b26 0%, #101722 100%);
+      border-color: #10b981;
+    }
+    .hero-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #34d399;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .hero-card h2 {
+      font-size: 20px;
+      line-height: 1.25;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .mini-item {
+      background: #0b0e14;
+      border: 1px solid #1e2636;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .item-box {
+      height: 68px;
+      background: #171e2b;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: #ffffff;
+      color: #090c10;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .badge.green {
+      background: #10b981;
+      color: #041f15;
+    }
+    .mini-label {
+      display: block;
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Row 2: 3-Column Category Cards */
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .grid-card {
+      background-color: #131720;
+      border: 1px solid #222b3a;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .grid-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .grid-card-header h3 {
+      font-size: 17px;
+      color: #ffffff;
+    }
+    .grid-card-header span {
+      color: #34d399;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Row 3: Scrollable Horizontal Product Strip */
+    .strip-section {
+      background-color: #131720;
+      border: 1px solid #222b3a;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+    .strip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .strip-header h3 {
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .strip-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .strip-item {
+      min-width: 165px;
+      background: #0b0e14;
+      border: 1px solid #1f2736;
+      border-radius: 10px;
+      padding: 12px;
+      flex-shrink: 0;
+    }
+    .strip-thumb {
+      height: 110px;
+      background: #171e2b;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+    .strip-title {
+      font-size: 13px;
+      color: #e2e8f0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 6px;
+    }
+    .strip-price {
+      margin-top: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .strip-price small {
+      color: #64748b;
+      text-decoration: line-through;
+      font-weight: 400;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 28px 16px;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid #1e2532;
+      margin-top: 24px;
     }
   </style>
 </head>
 <body>
-  <header class="banner">
-    <img src="image_88990569.jpg" alt="Karay — Acquire fast">
-    <p class="banner-tagline">Buy &amp; Sell Directly From Independent Sellers</p>
-  </header>
 
-  <div class="container">
-    <div class="card">
-      <h3>Wireless Headphones</h3>
-      <p class="seller">Sold by: <strong>TechStore UK</strong></p>
-      <p class="price">£29.99</p>
-      <button onclick="alert('Added to your Karay cart!')">Buy Now</button>
+  <!-- Sticky Top Bar -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">
+      <img src="image_88990569.jpg" alt="Karay">
+    </a>
+    <div class="nav-location">
+      <span>Delivering to</span>
+      <strong>United Kingdom</strong>
     </div>
+    <div class="search-bar">
+      <select class="search-select">
+        <option>All</option>
+        <option>Tech</option>
+        <option>Home</option>
+        <option>Fashion</option>
+      </select>
+      <input type="text" class="search-input" placeholder="Search Karay...">
+      <button class="search-btn">Go</button>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-item">
+        <span>Hello, Sign in</span>
+        <strong>Account &amp; Lists</strong>
+      </div>
+      <div class="nav-item">
+        <span>Returns</span>
+        <strong>&amp; Orders</strong>
+      </div>
+      <div class="cart-badge">Cart (0)</div>
+    </div>
+  </nav>
+
+  <!-- Secondary Category Strip -->
+  <div class="subnav">
+    <a href="#" class="highlight">☰ All Categories</a>
+    <a href="#">Karay Flash Drops</a>
+    <a href="#">Best Sellers</a>
+    <a href="#">Independent Creators</a>
+    <a href="#">Tech &amp; Audio</a>
+    <a href="#">Home Setup</a>
+    <a href="#">Streetwear</a>
+    <a href="#">Sell on Karay</a>
   </div>
-</body>
-</html>
+
+  <!-- Main Scrollable Content -->
+  <main class="main-wrap">
+
+    <!-- Row 1: 4 Hero Promo Cards -->
+    <section class="hero-row">
+      <div class="hero-card accent-card">
+        <div>
+          <div class="hero-tag">Karay Direct</div>
+          <h2>Next-Gen Tech &amp; Everyday Carry</h2>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-item">
+            <div class="item-box">🎧</div>
+            <span class="badge green">30% off</span>
+            <span class="mini-label">Studio Audio</span>
+          </div>
+          <div class="mini-item">
+            <div class="item-box">⌚</div>
+            <span class="badge green">25% off</span>
+            <span class="mini-label">Smart Watches</span>
+          </div>
+          <div class="mini-item">
+            <div class="item-box">🔋</div>
+            <span class="badge green">40% off</span>
+            <span class="mini-label">Fast Chargers</span>
+          </div>
+          <div class="mini-item">
+            <div class="item-box">📱</div>
+            <span class="badge green">18% off</span>
+            <span class="mini-label">Phone Gear</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div>
+          <div class="hero-tag">Verified Sellers</div>
+          <h2>Curated Desk &amp; Gaming Setups</h2>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-item">
+            <div class="item-box">⌨️</div>
+            <span class="badge">35% off</span>
+            <span class="mini-label">Keyboards</span>
+          </div>
+          <div class="mini-item">
+            <div class="item-box">🖱️</div>
+            
